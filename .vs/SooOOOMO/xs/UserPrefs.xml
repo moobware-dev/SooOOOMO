@@ -1,0 +1,14 @@
+﻿<Properties StartupConfiguration="{7BB6A468-2748-E70A-E492-B15E5D3EF757}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Programming/FadeToBlack.cs">
+    <Files>
+      <File FileName="Assets/Programming/FadeToBlack.cs" Line="15" Column="24" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.SooOOOMO PreferredExecutionTarget="Unity.Editor" />
+  <MultiItemStartupConfigurations />
+</Properties>
