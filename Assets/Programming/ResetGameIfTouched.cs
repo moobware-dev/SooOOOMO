@@ -6,7 +6,9 @@ using UnityEngine.SceneManagement;
 public class ResetGameIfTouched : MonoBehaviour
 {
     public float TimeFromTouchToRestartInSeconds = 1f;
-    private Scoreboard scoreboard;
+    Scoreboard scoreboard;
+
+    bool alreadyRecordedTheWinner;
 
     void Start()
     {
@@ -15,16 +17,22 @@ public class ResetGameIfTouched : MonoBehaviour
 
     void OnTriggerEnter(Collider collidedWith)
     {
-        Debug.Log(string.Format("{0} touched the floor!", collidedWith));
+        if (alreadyRecordedTheWinner) {
+            return;
+        }
+
+        //Debug.Log(string.Format("{0} touched the floor!", collidedWith));
         StartCoroutine(RestartTheGameAfterSeconds());
 
         if (collidedWith.CompareTag("Player"))
         {
             scoreboard.RecordEnemyWin();
+            alreadyRecordedTheWinner = true;
         }
         else
         {
             scoreboard.RecordPlayerWin();
+            alreadyRecordedTheWinner = true;
         }
     }
 

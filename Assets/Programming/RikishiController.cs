@@ -1,10 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
 public class RikishiController : MonoBehaviour
 {
+    public Transform shoveColliderPosition;
     public bool isThePlayer;
     public float shoveForce = 100f;
     Animator animator;
@@ -14,6 +13,10 @@ public class RikishiController : MonoBehaviour
     bool isShoved = false;
     Vector3 shovedForce;
 
+    Vector3 shoveColliderHalfExtents;
+
+    bool enemyInRange = false;
+
     // Use this for initialization
     void Start()
     {
@@ -21,6 +24,9 @@ public class RikishiController : MonoBehaviour
         var rikishis = FindObjectsOfType<RikishiController>();
         enemy = rikishis[0] == this ? rikishis[1] : rikishis[0];
         enemyRigidBody = enemy.gameObject.GetComponent<Rigidbody>();
+        //var referenceCollider = shoveColliderPosition.GetComponent<BoxCollider>();
+        //Debug.Log(string.Format("Refrence collider extents: {0}", referenceCollider.bounds.extents));
+        //shoveColliderHalfExtents = referenceCollider.bounds.extents / 2;
     }
 
     // Update is called once per frame
@@ -40,7 +46,7 @@ public class RikishiController : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
+    void FixedUpdate()
     {
         if (isShoved) {
             this.animator.SetTrigger("Shoved");
@@ -50,12 +56,24 @@ public class RikishiController : MonoBehaviour
     }
 
     void ShoveForce() {
-        Debug.Log("Animation event received");
-        enemy.GetShoved((enemy.gameObject.transform.position - transform.position) * shoveForce);
+        //Debug.Log("Animation event received");
+
+        //var hits =  Physics.BoxCastAll(shoveColliderPosition.position, shoveColliderHalfExtents, shoveColliderPosition.forward);
+
+        //Debug.Log(string.Format("Hit stuff: {0}", hits.Length));
+        if (enemyInRange) {
+            enemy.GetShoved((enemy.gameObject.transform.position - transform.position) * shoveForce);
+        }
     }
 
     void GetShoved(Vector3 force) {
         isShoved = true;
         shovedForce = force;
+        transform.parent.GetComponent<Rigidbody>().freezeRotation = false;
+    }
+
+    public void SetEnemyIsInRange(bool inRange) {
+        Debug.Log("Enemy in range: " + inRange);
+        this.enemyInRange = inRange;
     }
 }

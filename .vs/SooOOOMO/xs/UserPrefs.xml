@@ -1,10 +1,11 @@
 ﻿<Properties StartupConfiguration="{7BB6A468-2748-E70A-E492-B15E5D3EF757}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Programming/Scoreboard.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Programming/DetectEnemyAlertRikishi.cs">
     <Files>
       <File FileName="Assets/Programming/FadeToBlack.cs" Line="25" Column="6" />
-      <File FileName="Assets/Programming/RikishiController.cs" Line="27" Column="18" />
-      <File FileName="Assets/Programming/ResetGameIfTouched.cs" Line="18" Column="72" />
-      <File FileName="Assets/Programming/Scoreboard.cs" Line="7" Column="16" />
+      <File FileName="Assets/Programming/RikishiController.cs" Line="46" Column="45" />
+      <File FileName="Assets/Programming/ResetGameIfTouched.cs" Line="33" Column="10" />
+      <File FileName="Assets/Programming/Scoreboard.cs" Line="37" Column="12" />
+      <File FileName="Assets/Programming/DetectEnemyAlertRikishi.cs" Line="17" Column="4" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
