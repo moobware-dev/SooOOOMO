@@ -1305,6 +1305,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   annoyingBannerPrefab: {fileID: 1767161488052248, guid: adb10318b648748d8bfda6d1c531dcfc,
     type: 2}
+  firstSceneAlreadyLoadedNugget: {fileID: 1603669042445458, guid: 659d04081d0954434a581035f462a542,
+    type: 2}
 --- !u!1 &1533921667
 GameObject:
   m_ObjectHideFlags: 0

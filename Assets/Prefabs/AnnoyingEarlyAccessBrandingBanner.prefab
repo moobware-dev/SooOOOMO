@@ -54,10 +54,9 @@ GameObject:
   m_Component:
   - component: {fileID: 224304684978338724}
   - component: {fileID: 111959960028042344}
-  - component: {fileID: 114814211879485210}
   m_Layer: 5
   m_Name: AnnoyingEarlyAccessBrandingBanner
-  m_TagString: Untagged
+  m_TagString: AnnoyingBanner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -137,17 +136,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: ' "Early Access"'
---- !u!114 &114814211879485210
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1767161488052248}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebb9bcfa2badc47f7b4bdebf0ec4a936, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!222 &222700519080071004
 CanvasRenderer:
   m_ObjectHideFlags: 1

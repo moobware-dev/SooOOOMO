@@ -6,11 +6,16 @@ using UnityEngine;
 public class GameController : MonoBehaviour {
 
     public GameObject annoyingBannerPrefab;
+    public GameObject firstSceneAlreadyLoadedNugget;
 
 	// Use this for initialization
 	void Start () {
-        var canvas = GameObject.FindWithTag("UI");
-        Instantiate(annoyingBannerPrefab, canvas.transform);
+        var bannerAlreadyShown = (GameObject.FindWithTag("FirstSceneAlreadyLoadedNugget") != null);
+            if (!bannerAlreadyShown) {
+            var canvas = GameObject.FindWithTag("UI");
+            Instantiate(annoyingBannerPrefab, canvas.transform);
+            Instantiate(firstSceneAlreadyLoadedNugget);
+        }
 	}
 	
 	// Update is called once per frame
