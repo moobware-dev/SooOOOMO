@@ -6,7 +6,7 @@
       <File FileName="Assets/Programming/ResetGameIfTouched.cs" Line="24" Column="76" />
       <File FileName="Assets/Programming/Scoreboard.cs" Line="37" Column="12" />
       <File FileName="Assets/Programming/DetectEnemyAlertRikishi.cs" Line="30" Column="48" />
-      <File FileName="Assets/Programming/GameController.cs" Line="1" Column="1" />
+      <File FileName="Assets/Programming/GameController.cs" Line="10" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

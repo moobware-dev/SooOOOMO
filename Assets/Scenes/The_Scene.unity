@@ -266,7 +266,7 @@ GameObject:
   - component: {fileID: 1004930045}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1303,6 +1303,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 622d968069dc94cb5a06832fc8d7b44f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  annoyingBannerPrefab: {fileID: 1767161488052248, guid: adb10318b648748d8bfda6d1c531dcfc,
+    type: 2}
 --- !u!1 &1533921667
 GameObject:
   m_ObjectHideFlags: 0
