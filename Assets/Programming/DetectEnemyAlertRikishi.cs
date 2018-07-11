@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class DetectEnemyAlertRikishi : MonoBehaviour {
 
-    RikishiController rikishi;
+    RikishiProtoController rikishi;
 
 	// Use this for initialization
 	void Start () {
-        rikishi = GameObject.FindWithTag("Player").GetComponentInChildren<RikishiController>();
+        rikishi = GameObject.FindWithTag("Player").GetComponentInChildren<RikishiProtoController>();
         //Debug.Log("rikishi: " + rikishi);
 	}
 	

@@ -206,7 +206,7 @@ GameObject:
   - component: {fileID: 114690599876228394}
   - component: {fileID: 114870756244018496}
   m_Layer: 0
-  m_Name: rikishi
+  m_Name: Rikishi_proto
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -862,6 +862,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b84cc346be4840cab87fc2e2068e777, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shoveColliderPosition: {fileID: 0}
+  isThePlayer: 0
+  shoveForce: 100
 --- !u!114 &114690599876228394
 MonoBehaviour:
   m_ObjectHideFlags: 1
