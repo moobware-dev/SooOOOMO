@@ -16,20 +16,14 @@ public class RikishiController : MonoBehaviour
         m_Capsule = GetComponent<CapsuleCollider>();
     }
 
+    public void SetDesiredAimTarget(Vector3 targetInWorldSpace) {
+        transform.LookAt(targetInWorldSpace);
+    }
 
     public void Move(Vector3 move)
     {
-        // convert the world relative moveInput vector into a local-relative
-        // turn amount and forward amount required to head in the desired
-        // direction.
-        if (move.magnitude > 1f) move.Normalize();
-        move = transform.InverseTransformDirection(move);
-        move = Vector3.ProjectOnPlane(move, Vector3.up);
-        //m_TurnAmount = Mathf.Atan2(move.x, move.z);
-        //m_ForwardAmount = move.z;
+        m_Rigidbody.velocity = move;
 
-        //float turnSpeed = Mathf.Lerp(m_StationaryTurnSpeed, m_MovingTurnSpeed, m_ForwardAmount);
-        //transform.Rotate(0, m_TurnAmount * turnSpeed * Time.deltaTime, 0);
         UpdateAnimator(move);
     }
 
