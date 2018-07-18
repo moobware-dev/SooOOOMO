@@ -5,6 +5,9 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class RikishiController : MonoBehaviour
 {
+
+    public float MoveSpeed = 1f;
+
     Rigidbody m_Rigidbody;
     Animator m_Animator;
     CapsuleCollider m_Capsule;
@@ -22,7 +25,8 @@ public class RikishiController : MonoBehaviour
 
     public void Move(Vector3 move)
     {
-        m_Rigidbody.velocity = move;
+        move.y = m_Rigidbody.velocity.y;
+        m_Rigidbody.velocity = move * MoveSpeed;
 
         UpdateAnimator(move);
     }

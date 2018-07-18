@@ -29,8 +29,6 @@ public class RikishiPlayerInputProvider : MonoBehaviour {
 
         rikishiController.SetDesiredAimTarget(debugPlayerAimRay + playerTransform.position);
 
-
-
         float h = CrossPlatformInputManager.GetAxis("Horizontal");
         float v = CrossPlatformInputManager.GetAxis("Vertical");
         var movementVector = v * playerTransform.forward + h * playerTransform.right;
