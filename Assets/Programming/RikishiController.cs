@@ -31,11 +31,18 @@ public class RikishiController : MonoBehaviour
     }
 
     public void SetDesiredAimTarget(Vector3 targetInWorldSpace) {
+        if (isShoved == true) {
+            return;
+        }
         transform.LookAt(targetInWorldSpace);
     }
 
     public void Move(Vector3 move)
     {
+        if (isShoved == true)
+        {
+            return;
+        }
         move.y = rigidBody.velocity.y;
         rigidBody.velocity = move * MoveSpeed;
 
@@ -48,26 +55,50 @@ public class RikishiController : MonoBehaviour
 
     public void ShoveForce() {
         if (enemyInRange) {
+            Debug.Log("This: " + this + " did the shoving");
             enemy.GetShoved((enemy.gameObject.transform.position - transform.position) * shoveForce);
         }
     }
 
     void GetShoved(Vector3 force)
     {
+        Debug.Log("This: " + this + " got shoved");
         isShoved = true;
         shovedForce = force;
-        transform.parent.GetComponent<Rigidbody>().freezeRotation = false;
+        rigidBody.freezeRotation = false;
     }
 
-    public void SetEnemyIsInRange(bool inRange)
+    void FixedUpdate()
     {
-        Debug.Log("Enemy in range: " + inRange);
-        this.enemyInRange = inRange;
+        if (isShoved)
+        {
+            Debug.Log("Force applied on: " + this);
+            this.animator.SetTrigger("Shoved");
+            GetComponentInParent<Rigidbody>().AddForce(shovedForce);
+            isShoved = false;
+            var enemyInputProviders = GetComponents<RikishiEnemyInputProvider>();
+            foreach (var enemyInputProvider in enemyInputProviders) {
+                enemyInputProvider.enabled = false;
+            }
+        }
     }
 
-    public void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
-        Debug.Log("You in the danger zone boy: " + other);
+        //Debug.Log("detected thing: " + other);
+        if (other.CompareTag("Enemy"))
+        {
+            enemyInRange = true;
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        //Debug.Log("detected thing: " + other);
+        if (other.CompareTag("Enemy"))
+        {
+            enemyInRange = false;
+        }
     }
 
     void UpdateAnimator(Vector3 move)

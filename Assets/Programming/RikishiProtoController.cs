@@ -5,7 +5,7 @@ public class RikishiProtoController : MonoBehaviour
 {
     public Transform shoveColliderPosition;
     public bool isThePlayer;
-    public float shoveForce = 100f;
+    public float shoveForce = 1f;
     Animator animator;
     RikishiProtoController enemy;
     Rigidbody enemyRigidBody;

@@ -20,7 +20,8 @@ public class RikishiEnemyInputProvider : MonoBehaviour {
         rikishiController = GetComponent<RikishiController>();
         zeFlabben = GetComponent<ParameterizedFlabbiness>();
         scoreboard = FindObjectOfType<Scoreboard>();
-        zeFlabben.Flabbiness = scoreboard.GetEnemyScore() * 10f;
+        zeFlabben.Flabbiness = scoreboard.GetEnemyScore() * 34f;
+        rikishiController.shoveForce = zeFlabben.Flabbiness * 3;
     }
 
     void FixedUpdate()
