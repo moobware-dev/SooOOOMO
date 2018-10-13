@@ -16,6 +16,14 @@ public class Scoreboard : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        Debug.Log("WHAT THE FUCKKKKKKKKKKKKKK");
+        var firstSceneAlreadyLoaded = (GameObject.FindWithTag("FirstSceneAlreadyLoadedNugget") != null);
+        if (!firstSceneAlreadyLoaded)
+        {
+            Debug.Log("Hey jag do the thing!");
+            PlayerPrefs.SetInt(PLAYER_SCORE_KEY, 0);
+            PlayerPrefs.SetInt(ENEMY_SCORE_KEY, 0);
+        }
         playerScore = PlayerPrefs.GetInt(PLAYER_SCORE_KEY);
         enemyScore = PlayerPrefs.GetInt(ENEMY_SCORE_KEY);
 
@@ -41,4 +49,11 @@ public class Scoreboard : MonoBehaviour {
         PlayerPrefs.SetInt(ENEMY_SCORE_KEY, enemyScore);
     }
 
+    public int GetPlayerScore() {
+        return playerScore;
+    }
+
+    public int GetEnemyScore() {
+        return enemyScore;
+    }
 }

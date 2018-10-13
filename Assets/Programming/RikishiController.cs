@@ -5,7 +5,6 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class RikishiController : MonoBehaviour
 {
-
     public float MoveSpeed = 1f;
 
     Rigidbody m_Rigidbody;
