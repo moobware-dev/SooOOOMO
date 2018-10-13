@@ -13,8 +13,6 @@ public class RikishiProtoController : MonoBehaviour
     bool isShoved = false;
     Vector3 shovedForce;
 
-    Vector3 shoveColliderHalfExtents;
-
     bool enemyInRange = false;
 
     // Use this for initialization
