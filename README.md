@@ -1,6 +1,6 @@
 # SooOOOMO
 
-## Just you, your udders, and a bucket.  You know what to do...
+## Doesn't look like much now, and maybe it never will LOL
 
 A Sumo Wrastlin' game.  Here's the status of the project: [trello][1], and the latest deployed, playable version: [itch][2].
 
