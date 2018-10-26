@@ -8,6 +8,9 @@ public class RikishiController : MonoBehaviour
     public float MoveSpeed = 1f;
     public float shoveForce = 100f;
 
+    public float minimumTurnAmountThreshold = 0.01f;
+    public float minimumMoveAmountThreshold = 0.5f;
+
     Rigidbody rigidBody;
     Animator animator;
     CapsuleCollider capsule;
@@ -17,24 +20,36 @@ public class RikishiController : MonoBehaviour
     Vector3 shovedForce;
     bool enemyInRange;
 
+    bool doinTheDance = true;
+
+    Vector3 previousAimTarget;
+    Vector3 currentAimTarget;
+
     void Start()
     {
         animator = GetComponent<Animator>();
         rigidBody = GetComponent<Rigidbody>();
         capsule = GetComponent<CapsuleCollider>();
         var rikishis = FindObjectsOfType<RikishiController>();
-        if(rikishis[0] != this) {
+        if (rikishis[0] != this)
+        {
             enemy = rikishis[0];
-        } else if (rikishis[1] != this) {
+        }
+        else if (rikishis[1] != this)
+        {
             enemy = rikishis[1];
         }
     }
 
-    public void SetDesiredAimTarget(Vector3 targetInWorldSpace) {
-        if (isShoved == true) {
+    public void SetDesiredAimTarget(Vector3 targetInWorldSpace)
+    {
+        if (isShoved == true)
+        {
             return;
         }
-        transform.LookAt(targetInWorldSpace);
+        previousAimTarget = currentAimTarget;
+        currentAimTarget = targetInWorldSpace;
+        transform.LookAt(currentAimTarget);
     }
 
     public void Move(Vector3 move)
@@ -49,12 +64,15 @@ public class RikishiController : MonoBehaviour
         UpdateAnimator(move);
     }
 
-    public void AttemptShove() {
+    public void AttemptShove()
+    {
         animator.SetTrigger("Hadouken");
     }
 
-    public void ShoveForce() {
-        if (enemyInRange) {
+    public void ShoveForce()
+    {
+        if (enemyInRange)
+        {
             Debug.Log("This: " + this + " did the shoving");
             enemy.GetShoved((enemy.gameObject.transform.position - transform.position) * shoveForce);
         }
@@ -77,7 +95,8 @@ public class RikishiController : MonoBehaviour
             GetComponentInParent<Rigidbody>().AddForce(shovedForce);
             isShoved = false;
             var enemyInputProviders = GetComponents<RikishiEnemyInputProvider>();
-            foreach (var enemyInputProvider in enemyInputProviders) {
+            foreach (var enemyInputProvider in enemyInputProviders)
+            {
                 enemyInputProvider.enabled = false;
             }
         }
@@ -103,10 +122,59 @@ public class RikishiController : MonoBehaviour
 
     void UpdateAnimator(Vector3 move)
     {
-        if (move.sqrMagnitude > 0.1f)
+        if (doinTheDance && move.sqrMagnitude > 0.1f)
         {
             Debug.Log("They tryna move dawg");
             animator.SetTrigger("Stop Dancing");
+            doinTheDance = false;
+        }
+
+        var turning = (previousAimTarget - currentAimTarget).sqrMagnitude > minimumTurnAmountThreshold;
+
+        // thanks smart unity people: https://docs.unity3d.com/Manual/AmountVectorMagnitudeInAnotherDirection.html
+        // "The magnitude of an object’s rigidbody.velocity vector will give the speed 
+        // in its direction of overall motion but to isolate the speed in the forward direction,
+        // you should use the dot product"
+        var playerForwardMovement = Mathf.Abs(Vector3.Dot(rigidBody.velocity, transform.forward));
+        var playerRightMovement = Mathf.Abs(Vector3.Dot(rigidBody.velocity, transform.right));
+
+        var standingStill = (
+            !turning
+            && playerForwardMovement < minimumMoveAmountThreshold
+            && playerRightMovement < minimumMoveAmountThreshold);
+        
+        var turningInPlace =  (
+            turning
+            && playerForwardMovement < minimumMoveAmountThreshold
+            && playerRightMovement < minimumMoveAmountThreshold);
+        
+        var walkingStraight = (
+            !turning
+            && playerForwardMovement > minimumMoveAmountThreshold
+            && playerRightMovement < minimumMoveAmountThreshold);
+
+        var strafing = (
+            playerForwardMovement < minimumMoveAmountThreshold
+            && playerRightMovement > minimumMoveAmountThreshold);
+
+        if (standingStill)
+        {
+            animator.SetBool("Moving", false);
+        }
+        else if (strafing || turningInPlace)
+        {
+            animator.SetBool("Moving", true);
+            animator.SetFloat("Walk0Strafe1Blend", 1f);
+        }
+        else if (walkingStraight)
+        {
+            animator.SetBool("Moving", true);
+            animator.SetFloat("Walk0Strafe1Blend", 0f);
+        }
+        else
+        {
+            animator.SetBool("Moving", true);
+            animator.SetFloat("Walk0Strafe1Blend", 0.5f);
         }
     }
 }
