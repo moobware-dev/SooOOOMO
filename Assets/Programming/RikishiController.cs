@@ -164,17 +164,17 @@ public class RikishiController : MonoBehaviour
         else if (strafing || turningInPlace)
         {
             animator.SetBool("Moving", true);
-            animator.SetFloat("Walk0Strafe1Blend", 1f);
+            animator.SetFloat("Walk0Strafe1Blend", 1f, 0.1f, Time.deltaTime);
         }
         else if (walkingStraight)
         {
             animator.SetBool("Moving", true);
-            animator.SetFloat("Walk0Strafe1Blend", 0f);
+            animator.SetFloat("Walk0Strafe1Blend", 0f, 0.1f, Time.deltaTime);
         }
         else
         {
             animator.SetBool("Moving", true);
-            animator.SetFloat("Walk0Strafe1Blend", 0.5f);
+            animator.SetFloat("Walk0Strafe1Blend", 0.5f, 0.1f, Time.deltaTime);
         }
     }
 }
