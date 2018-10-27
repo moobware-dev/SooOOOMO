@@ -78,6 +78,11 @@ public class RikishiController : MonoBehaviour
         }
     }
 
+    public void DodgeRight() {
+        animator.SetTrigger("Dodge Right");
+        rigidBody.AddForce(transform.right * 300);
+    }
+
     void GetShoved(Vector3 force)
     {
         Debug.Log("This: " + this + " got shoved");

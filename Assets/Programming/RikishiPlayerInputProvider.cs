@@ -48,5 +48,9 @@ public class RikishiPlayerInputProvider : MonoBehaviour
         {
             rikishiController.AttemptShove();
         }
+
+        if (Input.GetKeyDown(KeyCode.Q)) {
+            rikishiController.DodgeRight();
+        }
     }
 }
