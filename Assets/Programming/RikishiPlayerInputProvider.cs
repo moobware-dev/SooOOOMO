@@ -4,7 +4,6 @@ using UnityStandardAssets.CrossPlatformInput;
 [RequireComponent(typeof(RikishiController))]
 public class RikishiPlayerInputProvider : MonoBehaviour
 {
-
     public float DebugPlayerAimRayHeight = 0.75f;
     public float DebugPlayerAimRayLength = 1f;
     Transform mainCameraTransform;
