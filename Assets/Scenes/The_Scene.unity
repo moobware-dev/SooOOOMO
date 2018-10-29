@@ -288,6 +288,21 @@ Prefab:
       propertyPath: m_LocalPosition.z
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 114845713318875254, guid: b31c3fb482d384e4c85ecca45202c82e,
+        type: 2}
+      propertyPath: dodgeStepForce
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 114845713318875254, guid: b31c3fb482d384e4c85ecca45202c82e,
+        type: 2}
+      propertyPath: dodgeHopForce
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 114401906865359312, guid: b31c3fb482d384e4c85ecca45202c82e,
+        type: 2}
+      propertyPath: doubleTapDelayTime
+      value: 0.25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b31c3fb482d384e4c85ecca45202c82e, type: 2}
   m_IsPrefabParent: 0

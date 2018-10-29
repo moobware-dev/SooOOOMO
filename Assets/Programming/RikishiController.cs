@@ -8,6 +8,9 @@ public class RikishiController : MonoBehaviour
     public float MoveSpeed = 1f;
     public float shoveForce = 100f;
 
+    public float dodgeStepForce = 100f;
+    public float dodgeHopForce = 100f;
+
     public float minimumTurnAmountThreshold = 0.01f;
     public float minimumMoveAmountThreshold = 0.5f;
 
@@ -24,6 +27,8 @@ public class RikishiController : MonoBehaviour
 
     Vector3 previousAimTarget;
     Vector3 currentAimTarget;
+
+    bool isDodging = false;
 
     void Start()
     {
@@ -43,7 +48,7 @@ public class RikishiController : MonoBehaviour
 
     public void SetDesiredAimTarget(Vector3 targetInWorldSpace)
     {
-        if (isShoved == true)
+        if (isShoved)
         {
             return;
         }
@@ -54,7 +59,7 @@ public class RikishiController : MonoBehaviour
 
     public void Move(Vector3 move)
     {
-        if (isShoved == true)
+        if (isShoved || isDodging)
         {
             return;
         }
@@ -78,6 +83,23 @@ public class RikishiController : MonoBehaviour
         }
     }
 
+    public void DodgeRight() {
+        if (isDodging) {
+            return; 
+        }
+        isDodging = true;
+        animator.SetTrigger("Dodge Right");
+        rigidBody.AddForce(transform.right * dodgeStepForce);
+    }
+
+    public void DodgeRightStep() {
+        rigidBody.AddForce(transform.right * dodgeHopForce);
+    }
+
+    public void DodgeDone() {
+        isDodging = false;
+    }
+
     void GetShoved(Vector3 force)
     {
         Debug.Log("This: " + this + " got shoved");
@@ -90,10 +112,10 @@ public class RikishiController : MonoBehaviour
     {
         if (isShoved)
         {
+            isShoved = false;
             Debug.Log("Force applied on: " + this);
             this.animator.SetTrigger("Shoved");
             GetComponentInParent<Rigidbody>().AddForce(shovedForce);
-            isShoved = false;
             var enemyInputProviders = GetComponents<RikishiEnemyInputProvider>();
             foreach (var enemyInputProvider in enemyInputProviders)
             {
