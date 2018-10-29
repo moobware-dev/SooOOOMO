@@ -48,7 +48,7 @@ public class RikishiController : MonoBehaviour
 
     public void SetDesiredAimTarget(Vector3 targetInWorldSpace)
     {
-        if (isShoved || isDodging)
+        if (isShoved)
         {
             return;
         }
@@ -112,10 +112,10 @@ public class RikishiController : MonoBehaviour
     {
         if (isShoved)
         {
+            isShoved = false;
             Debug.Log("Force applied on: " + this);
             this.animator.SetTrigger("Shoved");
             GetComponentInParent<Rigidbody>().AddForce(shovedForce);
-            isShoved = false;
             var enemyInputProviders = GetComponents<RikishiEnemyInputProvider>();
             foreach (var enemyInputProvider in enemyInputProviders)
             {

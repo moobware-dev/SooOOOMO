@@ -1,9 +1,14 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
 [RequireComponent(typeof(RikishiController))]
 public class RikishiPlayerInputProvider : MonoBehaviour
 {
+    public float doubleTapDelayTime = 0.25f;
+    //private KeyCode lastKeyPressed;
+    //private float lastKeyPressTime;
+
     public float DebugPlayerAimRayHeight = 0.75f;
     public float DebugPlayerAimRayLength = 1f;
     Transform mainCameraTransform;
@@ -12,6 +17,12 @@ public class RikishiPlayerInputProvider : MonoBehaviour
     RikishiController rikishiController;
     ParameterizedFlabbiness zeFlabben;
     Scoreboard scoreboard;
+
+    Dictionary<KeyCode, float> LastTimeKeyTapped = new Dictionary<KeyCode, float> {
+        { KeyCode.D, -1000f}
+    };
+
+    private bool shouldDodgeRight;
 
     void Start()
     {
@@ -43,13 +54,31 @@ public class RikishiPlayerInputProvider : MonoBehaviour
         var movementVector = v * playerTransform.forward + h * playerTransform.right;
         rikishiController.Move(movementVector);
 
+        if (shouldDodgeRight) {
+            shouldDodgeRight = false;
+            rikishiController.DodgeRight();
+        }
+
         if (Input.GetMouseButtonDown(0))
         {
             rikishiController.AttemptShove();
         }
+    }
 
-        if (Input.GetKeyDown(KeyCode.Q)) {
-            rikishiController.DodgeRight();
+    private void Update()
+    {
+        if (Input.GetKeyUp(KeyCode.D))
+        {
+            if (PlayerDoubleTapped(KeyCode.D))
+            {
+                shouldDodgeRight = true;
+            }
+            LastTimeKeyTapped[KeyCode.D] = Time.time;
         }
+    }
+
+    private bool PlayerDoubleTapped(KeyCode key)
+    {
+        return (Time.time - LastTimeKeyTapped[key]) < doubleTapDelayTime;
     }
 }
