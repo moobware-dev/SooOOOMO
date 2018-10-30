@@ -16,7 +16,6 @@ public class Scoreboard : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        Debug.Log("WHAT THE FUCKKKKKKKKKKKKKK");
         var firstSceneAlreadyLoaded = (GameObject.FindWithTag("FirstSceneAlreadyLoadedNugget") != null);
         if (!firstSceneAlreadyLoaded)
         {
