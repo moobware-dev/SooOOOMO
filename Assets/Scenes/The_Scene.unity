@@ -303,6 +303,11 @@ Prefab:
       propertyPath: doubleTapDelayTime
       value: 0.25
       objectReference: {fileID: 0}
+    - target: {fileID: 114025141988552804, guid: b31c3fb482d384e4c85ecca45202c82e,
+        type: 2}
+      propertyPath: Flabbiness
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b31c3fb482d384e4c85ecca45202c82e, type: 2}
   m_IsPrefabParent: 0
