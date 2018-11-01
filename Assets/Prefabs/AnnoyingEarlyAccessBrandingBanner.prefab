@@ -115,7 +115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.08235294, g: 0.08235294, b: 0.08235294, a: 1}
+  m_Color: {r: 1, g: 0.5878298, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -135,7 +135,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: ' "Early Access"'
+  m_Text: Happy Halloween!
 --- !u!222 &222700519080071004
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -164,7 +164,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: -318.47473, y: 215.15161}
-  m_SizeDelta: {x: 322, y: 48.1}
+  m_SizeDelta: {x: 500, y: 48.1}
   m_Pivot: {x: 0, y: 1}
 --- !u!224 &224304684978338724
 RectTransform:

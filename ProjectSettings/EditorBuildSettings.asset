@@ -4,4 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/The_Scene.unity
+    guid: ae8c84ca5489b4159803d92aff45ac68
+  - enabled: 1
+    path: Assets/Scenes/HallowScene.unity
+    guid: eaa775d3d4162463396e7892fa6e2d05

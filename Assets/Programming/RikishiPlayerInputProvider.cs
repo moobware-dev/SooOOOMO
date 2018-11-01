@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
@@ -54,7 +55,8 @@ public class RikishiPlayerInputProvider : MonoBehaviour
         var movementVector = v * playerTransform.forward + h * playerTransform.right;
         rikishiController.Move(movementVector);
 
-        if (shouldDodgeRight) {
+        if (shouldDodgeRight)
+        {
             shouldDodgeRight = false;
             rikishiController.DodgeRight();
         }
