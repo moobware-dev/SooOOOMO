@@ -17,7 +17,7 @@ public class GameController : MonoBehaviour {
 
         if (SceneManager.GetActiveScene().name != "HallowScene"
             && (today < halloween + TimeSpan.FromDays(1)
-                || today > halloween - TimeSpan.FromDays(1))) {
+                && today > halloween - TimeSpan.FromDays(1))) {
             SceneManager.LoadScene("HallowScene");
             return; // XD
         }

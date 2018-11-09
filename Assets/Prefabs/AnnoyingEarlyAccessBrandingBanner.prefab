@@ -115,7 +115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.5878298, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.50689656, b: 0.50689656, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -135,7 +135,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Happy Halloween!
+  m_Text: '"Early Access"'
 --- !u!222 &222700519080071004
 CanvasRenderer:
   m_ObjectHideFlags: 1

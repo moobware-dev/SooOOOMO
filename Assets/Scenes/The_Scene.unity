@@ -308,6 +308,16 @@ Prefab:
       propertyPath: Flabbiness
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114845713318875254, guid: b31c3fb482d384e4c85ecca45202c82e,
+        type: 2}
+      propertyPath: selectedShader
+      value: 
+      objectReference: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 114845713318875254, guid: b31c3fb482d384e4c85ecca45202c82e,
+        type: 2}
+      propertyPath: minimumTurnAmountThreshold
+      value: 0.01
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b31c3fb482d384e4c85ecca45202c82e, type: 2}
   m_IsPrefabParent: 0

@@ -5,6 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class RikishiController : MonoBehaviour
 {
+    public Material playerMaterial;
+
     public float MoveSpeed = 1f;
     public float shoveForce = 100f;
 
@@ -44,6 +46,10 @@ public class RikishiController : MonoBehaviour
         {
             enemy = rikishis[1];
         }
+
+        var rendererer = GetComponentInChildren<Renderer>();
+        rendererer.material = new Material(Shader.Find("Standard"));
+        rendererer.material.color = Random.ColorHSV(0, 1, 0.5f, 1);
     }
 
     public void SetDesiredAimTarget(Vector3 targetInWorldSpace)
