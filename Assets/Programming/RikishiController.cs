@@ -37,15 +37,15 @@ public class RikishiController : MonoBehaviour
         animator = GetComponent<Animator>();
         rigidBody = GetComponent<Rigidbody>();
         capsule = GetComponent<CapsuleCollider>();
-        var rikishis = FindObjectsOfType<RikishiController>();
-        if (rikishis[0] != this)
-        {
-            enemy = rikishis[0];
-        }
-        else if (rikishis[1] != this)
-        {
-            enemy = rikishis[1];
-        }
+        //var rikishis = FindObjectsOfType<RikishiController>();
+        //if (rikishis[0] != this)
+        //{
+        //    enemy = rikishis[0];
+        //}
+        //else if (rikishis[1] != this)
+        //{
+        //    enemy = rikishis[1];
+        //}
 
         var rendererer = GetComponentInChildren<Renderer>();
         rendererer.material = new Material(Shader.Find("Standard"));
