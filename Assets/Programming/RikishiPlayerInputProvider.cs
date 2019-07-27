@@ -60,11 +60,6 @@ public class RikishiPlayerInputProvider : MonoBehaviour
             shouldDodgeRight = false;
             rikishiController.DodgeRight();
         }
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            rikishiController.AttemptShove();
-        }
     }
 
     private void Update()
@@ -76,6 +71,11 @@ public class RikishiPlayerInputProvider : MonoBehaviour
                 shouldDodgeRight = true;
             }
             LastTimeKeyTapped[KeyCode.D] = Time.time;
+        }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            rikishiController.AttemptShove();
         }
     }
 
