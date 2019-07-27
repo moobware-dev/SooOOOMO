@@ -1,18 +1,37 @@
 ﻿<Properties StartupConfiguration="{FCED50B0-7394-5BBD-2CB4-D0AEFFE277E5}|">
   <MonoDevelop.Ide.ItemProperties.SooOOOMO PreferredExecutionTarget="Unity.Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Programming/RikishiController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Programming/BT.cs">
     <Files>
-      <File FileName="Assets/Programming/RikishiController.cs" Line="88" Column="18" />
-      <File FileName="Assets/Standard Assets/Characters/ThirdPersonCharacter/Scripts/ThirdPersonUserControl.cs" Line="35" Column="1" />
-      <File FileName="Assets/Standard Assets/Characters/ThirdPersonCharacter/Scripts/ThirdPersonCharacter.cs" Line="104" Column="4" />
-      <File FileName="Assets/Programming/GameController.cs" Line="35" Column="3" />
-      <File FileName="Assets/Programming/RikishiEnemyInputProvider.cs" Line="16" Column="17" />
-      <File FileName="Assets/Programming/RikishiPlayerInputProvider.cs" Line="41" Column="64" />
+      <File FileName="Assets/Programming/RikishiController.cs" Line="72" Column="39" />
+      <File FileName="Assets/Standard Assets/Characters/ThirdPersonCharacter/Scripts/ThirdPersonUserControl.cs" />
+      <File FileName="Assets/Standard Assets/Characters/ThirdPersonCharacter/Scripts/ThirdPersonCharacter.cs" />
+      <File FileName="Assets/Programming/GameController.cs" />
+      <File FileName="Assets/Programming/RikishiEnemyInputProvider.cs" Line="11" Column="1" />
+      <File FileName="Assets/Programming/RikishiPlayerInputProvider.cs" Line="54" Column="63" />
+      <File FileName="Assets/Programming/BT.cs" Line="1" Column="1" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="SooOOOMO" expanded="True">
+            <Node name="Assets" expanded="True">
+              <Node name="Programming" expanded="True">
+                <Node name="BT.cs" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.UnitTesting.TestPad">
+        <State name="__root__">
+          <Node name="SooOOOMO" expanded="True" selected="True" />
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="554481c9-e38c-42e5-9910-11d20443f998" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="1ad3a86b-0269-40f8-b570-eea5542e7ed8" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
