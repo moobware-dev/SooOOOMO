@@ -26,7 +26,7 @@ public static class BT
     public static WaitForAnimatorState WaitForAnimatorState(Animator animator, string name, int layer = 0) { return new WaitForAnimatorState(animator, name, layer); }
     public static SetBool SetBool(Animator animator, string name, bool value) { return new SetBool(animator, name, value); }
     public static SetActive SetActive(GameObject gameObject, bool active) { return new SetActive(gameObject, active); }
-    public static WaitForAnimatorSignal WaitForAnimatorSignal(Animator animator, string name, string state, int layer = 0) { return new WaitForAnimatorSignal(animator, name, state, layer); }
+    //public static WaitForAnimatorSignal WaitForAnimatorSignal(Animator animator, string name, string state, int layer = 0) { return new WaitForAnimatorSignal(animator, name, state, layer); }
     public static Terminate Terminate() { return new Terminate(); }
     public static Log Log(string msg) { return new Log(msg); }
     public static RandomSequence RandomSequence(int[] weights = null) { return new RandomSequence(weights); }
@@ -629,46 +629,46 @@ public class SetActive : BTNode
     }
 }
 
-/// <summary>
-/// Wait for a signal to be received from a SendSignal state machine behaviour on an animator.
-/// </summary>
-public class WaitForAnimatorSignal : BTNode
-{
-    internal bool isSet = false;
-    string name;
-    int id;
+///// <summary>
+///// Wait for a signal to be received from a SendSignal state machine behaviour on an animator.
+///// </summary>
+//public class WaitForAnimatorSignal : BTNode
+//{
+//    internal bool isSet = false;
+//    string name;
+//    int id;
 
-    public WaitForAnimatorSignal(Animator animator, string name, string state, int layer = 0)
-    {
-        this.name = name;
-        this.id = Animator.StringToHash(name);
-        if (!animator.HasState(layer, this.id))
-        {
-            Debug.LogError("The animator does not have state: " + name);
-        }
-        else
-        {
-            SendSignal.Register(animator, name, this);
-        }
-    }
+//    public WaitForAnimatorSignal(Animator animator, string name, string state, int layer = 0)
+//    {
+//        this.name = name;
+//        this.id = Animator.StringToHash(name);
+//        if (!animator.HasState(layer, this.id))
+//        {
+//            Debug.LogError("The animator does not have state: " + name);
+//        }
+//        else
+//        {
+//            SendSignal.Register(animator, name, this);
+//        }
+//    }
 
-    public override BTState Tick()
-    {
-        if (!isSet)
-            return BTState.Continue;
-        else
-        {
-            isSet = false;
-            return BTState.Success;
-        }
+//    public override BTState Tick()
+//    {
+//        if (!isSet)
+//            return BTState.Continue;
+//        else
+//        {
+//            isSet = false;
+//            return BTState.Success;
+//        }
 
-    }
+//    }
 
-    public override string ToString()
-    {
-        return "Wait For Animator Signal : " + name;
-    }
-}
+//    public override string ToString()
+//    {
+//        return "Wait For Animator Signal : " + name;
+//    }
+//}
 
 public class Terminate : BTNode
 {
