@@ -246,6 +246,11 @@ PrefabInstance:
       propertyPath: LockOnToTargetRotationSpeed
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114607122317972002, guid: f43defa846051409992b692f47259de7,
+        type: 3}
+      propertyPath: TrackSpeed
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f43defa846051409992b692f47259de7, type: 3}
 --- !u!1001 &608440757
