@@ -34,7 +34,7 @@ public class RikishiEnemyInputProvider : MonoBehaviour
         scoreboard = FindObjectOfType<Scoreboard>();
         animator = GetComponent<Animator>();
         zeFlabben.Flabbiness = scoreboard.GetEnemyScore() * 34f;
-        rikishiController.shoveForce = zeFlabben.Flabbiness * 3;
+        rikishiController.shoveForce += zeFlabben.Flabbiness * 3;
 
         trackingTransform = new GameObject().transform;
         trackingTransform.position = playerTransform.forward;

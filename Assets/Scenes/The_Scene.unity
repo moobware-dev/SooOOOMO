@@ -239,7 +239,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4086522514810380, guid: f43defa846051409992b692f47259de7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.5
+      value: 0.45
       objectReference: {fileID: 0}
     - target: {fileID: 114607122317972002, guid: f43defa846051409992b692f47259de7,
         type: 3}
@@ -250,6 +250,11 @@ PrefabInstance:
         type: 3}
       propertyPath: TrackSpeed
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114607122317972002, guid: f43defa846051409992b692f47259de7,
+        type: 3}
+      propertyPath: PersonalSpaceBubbleRadius
+      value: 0.75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f43defa846051409992b692f47259de7, type: 3}
@@ -319,7 +324,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4617954642402736, guid: b31c3fb482d384e4c85ecca45202c82e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.5
+      value: 0.45
       objectReference: {fileID: 0}
     - target: {fileID: 114401906865359312, guid: b31c3fb482d384e4c85ecca45202c82e,
         type: 3}

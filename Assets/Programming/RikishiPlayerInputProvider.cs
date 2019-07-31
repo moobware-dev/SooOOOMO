@@ -33,7 +33,7 @@ public class RikishiPlayerInputProvider : MonoBehaviour
         zeFlabben = GetComponent<ParameterizedFlabbiness>();
         scoreboard = FindObjectOfType<Scoreboard>();
         zeFlabben.Flabbiness = scoreboard.GetPlayerScore() * 34f;
-        rikishiController.shoveForce = zeFlabben.Flabbiness * 3;
+        rikishiController.shoveForce += zeFlabben.Flabbiness * 3;
     }
 
     void FixedUpdate()
