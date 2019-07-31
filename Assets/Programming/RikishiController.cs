@@ -127,13 +127,19 @@ public class RikishiController : MonoBehaviour
             {
                 enemyInputProvider.enabled = false;
             }
+
+            var playerInputProviders = GetComponents<RikishiPlayerInputProvider>();
+            foreach (var playerInputProvider in playerInputProviders)
+            {
+                playerInputProvider.enabled = false;
+            }
         }
     }
 
     void OnTriggerEnter(Collider other)
     {
         //Debug.Log("detected thing: " + other);
-        if (other.CompareTag("Enemy"))
+        if (other.gameObject != transform.gameObject)
         {
             enemyInRange = true;
         }
@@ -142,7 +148,7 @@ public class RikishiController : MonoBehaviour
     void OnTriggerExit(Collider other)
     {
         //Debug.Log("detected thing: " + other);
-        if (other.CompareTag("Enemy"))
+        if (other.gameObject != transform.gameObject)
         {
             enemyInRange = false;
         }
