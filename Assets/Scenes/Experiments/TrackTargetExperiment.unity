@@ -296,7 +296,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OrbitSpeed: 50
-  OrbitRadius: 2
+  OrbitRadius: 1
 --- !u!135 &1434357810
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -363,7 +363,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1434357808}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -1, y: 0, z: 0}
   m_LocalScale: {x: 0.2545869, y: 0.2545869, z: 0.2545869}
   m_Children: []
   m_Father: {fileID: 0}
@@ -455,7 +455,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1835114803}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -2, y: 0, z: 0}
   m_LocalScale: {x: 0.50321, y: 0.50321, z: 0.50321}
   m_Children: []
   m_Father: {fileID: 0}
@@ -475,4 +475,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TrackingGizmoRadius: 0.3
   Target: {fileID: 1434357813}
-  TrackSpeed: 2
+  TrackSpeed: 1
