@@ -239,7 +239,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4086522514810380, guid: f43defa846051409992b692f47259de7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.45
+      value: 0.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 114983648871142018, guid: f43defa846051409992b692f47259de7,
+        type: 3}
+      propertyPath: RollinSpeed.z
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 114607122317972002, guid: f43defa846051409992b692f47259de7,
         type: 3}
@@ -322,9 +327,14 @@ PrefabInstance:
       propertyPath: minimumTurnAmountThreshold
       value: 0.01
       objectReference: {fileID: 0}
+    - target: {fileID: 114845713318875254, guid: b31c3fb482d384e4c85ecca45202c82e,
+        type: 3}
+      propertyPath: RollinSpeed.z
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4617954642402736, guid: b31c3fb482d384e4c85ecca45202c82e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.45
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 114401906865359312, guid: b31c3fb482d384e4c85ecca45202c82e,
         type: 3}

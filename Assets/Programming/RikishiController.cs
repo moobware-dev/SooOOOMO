@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -31,6 +32,9 @@ public class RikishiController : MonoBehaviour
     Vector3 currentAimTarget;
 
     bool isDodging = false;
+
+    public Vector3 RollinSpeed = Vector3.zero;
+    private bool rollin = false;
 
     void Start()
     {
@@ -85,7 +89,7 @@ public class RikishiController : MonoBehaviour
         if (enemyInRange)
         {
             Debug.Log("This: " + this + " did the shoving");
-            enemy.GetShoved((enemy.gameObject.transform.position - transform.position) * shoveForce);
+            enemy.GetShoved((enemy.gameObject.transform.position - transform.position).normalized * shoveForce);
         }
     }
 
@@ -133,6 +137,14 @@ public class RikishiController : MonoBehaviour
             {
                 playerInputProvider.enabled = false;
             }
+
+            StartCoroutine(JustKeepRollinRollinRollin(2));
+
+        }
+
+        if (rollin)
+        {
+            rigidBody.AddTorque(RollinSpeed);
         }
     }
 
@@ -210,5 +222,12 @@ public class RikishiController : MonoBehaviour
             animator.SetBool("Moving", true);
             animator.SetFloat("Walk0Strafe1Blend", 0.5f, 0.1f, Time.deltaTime);
         }
+    }
+
+
+    IEnumerator JustKeepRollinRollinRollin(float secondsToWait)
+    {
+        yield return new WaitForSeconds(secondsToWait);
+        rollin = true;
     }
 }

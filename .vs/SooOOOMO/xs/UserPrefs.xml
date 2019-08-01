@@ -1,12 +1,13 @@
 ﻿<Properties StartupConfiguration="{FCED50B0-7394-5BBD-2CB4-D0AEFFE277E5}|">
   <MonoDevelop.Ide.ItemProperties.SooOOOMO PreferredExecutionTarget="Unity.Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Programming/RikishiPlayerInputProvider.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Programming/FadeToBlack.cs">
     <Files>
-      <File FileName="Assets/Programming/RikishiEnemyInputProvider.cs" Line="37" Column="65" />
+      <File FileName="Assets/Programming/RikishiEnemyInputProvider.cs" Line="37" Column="39" />
       <File FileName="../2D Game Kit/Assets/2DGamekit/Scripts/AI/MissileGolem.cs" Line="85" Column="13" />
       <File FileName="Assets/Programming/BT.cs" Line="81" Column="28" />
-      <File FileName="Assets/Programming/RikishiController.cs" Line="88" Column="90" />
-      <File FileName="Assets/Programming/RikishiPlayerInputProvider.cs" Line="36" Column="27" />
+      <File FileName="Assets/Programming/RikishiController.cs" Line="215" Column="5" />
+      <File FileName="Assets/Programming/RikishiPlayerInputProvider.cs" Line="36" Column="66" />
+      <File FileName="Assets/Programming/FadeToBlack.cs" Line="18" Column="9" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -14,7 +15,7 @@
           <Node name="SooOOOMO" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="Programming" expanded="True">
-                <Node name="RikishiPlayerInputProvider.cs" selected="True" />
+                <Node name="FadeToBlack.cs" selected="True" />
               </Node>
             </Node>
           </Node>
