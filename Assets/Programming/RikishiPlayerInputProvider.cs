@@ -53,7 +53,7 @@ public class RikishiPlayerInputProvider : MonoBehaviour
         float h = CrossPlatformInputManager.GetAxis("Horizontal");
         float v = CrossPlatformInputManager.GetAxis("Vertical");
         var movementVector = v * playerTransform.forward + h * playerTransform.right;
-        rikishiController.Move(movementVector);
+        rikishiController.Move(movementVector.normalized);
 
         if (shouldDodgeRight)
         {

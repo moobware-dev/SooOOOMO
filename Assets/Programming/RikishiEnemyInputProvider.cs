@@ -41,24 +41,45 @@ public class RikishiEnemyInputProvider : MonoBehaviour
 
         // BT class from the 2D Game Kit
         // https://learn.unity.com/tutorial/2d-game-kit-advanced-topics#5c7f8528edbc2a002053b77a
+        //behaviorTree.OpenBranch(
+
+        //    //BT.If(() => { return m_EnemyBehaviour.Target != null; }).OpenBranch(
+        //    //    BT.Call(m_EnemyBehaviour.CheckTargetStillVisible),
+        //    //    BT.Call(m_EnemyBehaviour.OrientToTarget),
+        //    //    BT.Trigger(m_Animator, "Shooting"),
+        //    //    BT.Call(m_EnemyBehaviour.RememberTargetPos),
+        //    //    BT.WaitForAnimatorState(m_Animator, "Attack")
+        //    //),
+
+        //    BT.If(TestPlayerInStrikingDistance).OpenBranch(
+        //        BT.Trigger(animator, "Stop Dancing"),
+        //        BT.Call(Attack),
+        //        BT.Wait(StrikeDelay)
+        //    ),
+
+        //    BT.Call(LockOntoTarget)
+        //);
+        
+        // TODO fix this, it never progresses to the ATTACK instuction because while will only ever exit with 'failure' instead of success...
+        // Do I need to make proper BT nodes like 'SeekPlayer' that continues until you get to them or there is a point they give up?  And success when they are in striking distance?
         behaviorTree.OpenBranch(
-
-            //BT.If(() => { return m_EnemyBehaviour.Target != null; }).OpenBranch(
-            //    BT.Call(m_EnemyBehaviour.CheckTargetStillVisible),
-            //    BT.Call(m_EnemyBehaviour.OrientToTarget),
-            //    BT.Trigger(m_Animator, "Shooting"),
-            //    BT.Call(m_EnemyBehaviour.RememberTargetPos),
-            //    BT.WaitForAnimatorState(m_Animator, "Attack")
-            //),
-
-            BT.If(TestPlayerInStrikingDistance).OpenBranch(
-                BT.Trigger(animator, "Stop Dancing"),
-                BT.Call(Attack),
-                BT.Wait(StrikeDelay)
-            ),
-
-            BT.Call(LockOntoTarget)
-        ); ; ;
+            BT.RandomSequence().OpenBranch(
+                BT.Sequence().OpenBranch(
+                    BT.While(() => TestPlayerInStrikingDistance() == false).OpenBranch(
+                        BT.Log("Seeking Player"),
+                        BT.Call(LockOntoTarget),
+                        BT.Call(MoveToWardTarget)
+                    ),
+                    BT.Log("ATTACK!!!"),
+                    BT.Call(Attack)
+                ),
+                BT.Sequence().OpenBranch(
+                    BT.While(() => TestPlayerInStrikingDistance() == false).OpenBranch(
+                        BT.Log("Avoiding Player")
+                    )
+                )
+            )
+        );
     }
 
     void OnDrawGizmosSelected()
@@ -86,6 +107,11 @@ public class RikishiEnemyInputProvider : MonoBehaviour
     {
         trackingTransform.position = Vector3.Lerp(trackingTransform.position, playerTransform.position, Time.deltaTime * TrackSpeed);
         rikishiController.SetDesiredAimTarget(trackingTransform.position);
+    }
+
+    void MoveToWardTarget()
+    {
+        rikishiController.Move(fromPlayerToMe.normalized);
     }
 
     private void Update()

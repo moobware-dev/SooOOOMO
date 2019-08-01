@@ -394,6 +394,9 @@ public class RandomSequence : Block
     int[] m_Weight = null;
     int[] m_AddedWeight = null;
 
+    // TODO rewrite this bullshit to behave intuitively, the weights are what you pass in,
+    // to have equal weights, pass in equal weights, no goofy null param (and then buggy behavior)
+
     /// <summary>
     /// Will select one random child everytime it get triggered again
     /// </summary>
@@ -450,7 +453,7 @@ public class RandomSequence : Block
 
     void PickNewChild()
     {
-        int choice = Random.Range(0, m_AddedWeight[m_AddedWeight.Length - 1]);
+        int choice = Random.Range(0, m_AddedWeight[m_AddedWeight.Length - 1]) + 1; // added a plus one, there was a bug in the 2D GameKit code... wtf
 
         for (int i = 0; i < m_AddedWeight.Length; ++i)
         {

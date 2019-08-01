@@ -139,7 +139,6 @@ public class RikishiController : MonoBehaviour
             }
 
             StartCoroutine(JustKeepRollinRollinRollin(2));
-
         }
 
         if (rollin)

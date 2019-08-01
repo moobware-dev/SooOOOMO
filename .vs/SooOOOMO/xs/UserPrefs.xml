@@ -1,13 +1,13 @@
 ﻿<Properties StartupConfiguration="{FCED50B0-7394-5BBD-2CB4-D0AEFFE277E5}|">
   <MonoDevelop.Ide.ItemProperties.SooOOOMO PreferredExecutionTarget="Unity.Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Programming/FadeToBlack.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Programming/RikishiEnemyInputProvider.cs">
     <Files>
-      <File FileName="Assets/Programming/RikishiEnemyInputProvider.cs" Line="37" Column="39" />
-      <File FileName="../2D Game Kit/Assets/2DGamekit/Scripts/AI/MissileGolem.cs" Line="85" Column="13" />
-      <File FileName="Assets/Programming/BT.cs" Line="81" Column="28" />
-      <File FileName="Assets/Programming/RikishiController.cs" Line="215" Column="5" />
-      <File FileName="Assets/Programming/RikishiPlayerInputProvider.cs" Line="36" Column="66" />
-      <File FileName="Assets/Programming/FadeToBlack.cs" Line="18" Column="9" />
+      <File FileName="../2D Game Kit/Assets/2DGamekit/Scripts/AI/MissileGolem.cs" Line="113" Column="4" />
+      <File FileName="Assets/Programming/BT.cs" Line="423" Column="28" />
+      <File FileName="Assets/Programming/RikishiController.cs" Line="142" Column="10" />
+      <File FileName="Assets/Programming/RikishiPlayerInputProvider.cs" Line="43" Column="89" />
+      <File FileName="Assets/Programming/FadeToBlack.cs" Line="11" Column="41" />
+      <File FileName="Assets/Programming/RikishiEnemyInputProvider.cs" Line="110" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -15,7 +15,7 @@
           <Node name="SooOOOMO" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="Programming" expanded="True">
-                <Node name="FadeToBlack.cs" selected="True" />
+                <Node name="RikishiEnemyInputProvider.cs" selected="True" />
               </Node>
             </Node>
           </Node>
@@ -25,9 +25,14 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="1545511d-902d-4365-82bc-9f5059fca79b" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="f8c3f495-4aca-4421-9d44-f030e223bef1" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/moobware/dev/SooOOOMO/Assets/Programming/BT.cs" relfile="Assets/Programming/BT.cs" line="460" column="1" />
+      <Breakpoint file="/Users/moobware/dev/SooOOOMO/Assets/Programming/BT.cs" relfile="Assets/Programming/BT.cs" line="414" column="1" />
+      <Breakpoint file="/Users/moobware/dev/SooOOOMO/Assets/Programming/BT.cs" relfile="Assets/Programming/BT.cs" line="409" column="1" />
+      <Breakpoint file="/Users/moobware/dev/SooOOOMO/Assets/Programming/BT.cs" relfile="Assets/Programming/BT.cs" line="462" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>
