@@ -6,10 +6,14 @@ using UnityEngine;
 [RequireComponent(typeof(ParameterizedFlabbiness))]
 public class RikishiEnemyInputProvider : MonoBehaviour
 {
+    public Transform Dohyo;
+    public float DohyoRadius = 1f;
+
     public float PersonalSpaceBubbleRadius = 1f;
     public float TrackSpeed = 1f;
     public float StrikeDelay = 1f;
     private Transform trackingTransform;
+    private float trackingTransformStartY;
 
     Transform mainCameraTransform;
     Transform playerTransform;
@@ -24,6 +28,7 @@ public class RikishiEnemyInputProvider : MonoBehaviour
 
     private Vector3 fromPlayerToMe;
     private float distanceFromPlayerToMeSquared;
+    private float distanceFromMeToCenterOfDohyo;
 
     void Start()
     {
@@ -37,7 +42,8 @@ public class RikishiEnemyInputProvider : MonoBehaviour
         rikishiController.shoveForce += zeFlabben.Flabbiness * 3;
 
         trackingTransform = new GameObject().transform;
-        trackingTransform.position = playerTransform.forward;
+        trackingTransform.position = playerTransform.position;
+        trackingTransformStartY = trackingTransform.position.y;
 
         // BT class from the 2D Game Kit
         // https://learn.unity.com/tutorial/2d-game-kit-advanced-topics#5c7f8528edbc2a002053b77a
@@ -59,43 +65,77 @@ public class RikishiEnemyInputProvider : MonoBehaviour
 
         //    BT.Call(LockOntoTarget)
         //);
-        
-        // TODO fix this, it never progresses to the ATTACK instuction because while will only ever exit with 'failure' instead of success...
-        // Do I need to make proper BT nodes like 'SeekPlayer' that continues until you get to them or there is a point they give up?  And success when they are in striking distance?
+
         behaviorTree.OpenBranch(
-            BT.RandomSequence().OpenBranch(
+            BT.RandomSequence(new int[] { 3, 1 }).OpenBranch(
                 BT.Sequence().OpenBranch(
-                    BT.While(() => TestPlayerInStrikingDistance() == false).OpenBranch(
-                        BT.Log("Seeking Player"),
-                        BT.Call(LockOntoTarget),
-                        BT.Call(MoveToWardTarget)
-                    ),
-                    BT.Log("ATTACK!!!"),
+                    //BT.While(() => TestPlayerInStrikingDistance() == false).OpenBranch(
+                    //    BT.Log("Seeking Player"),
+                    //    BT.Call(LockOntoTarget),
+                    //    BT.Call(MoveToWardTarget)
+                    //),
+                    //BT.Log("ATTACK!!!"),
+                    //BT.Call(Attack)
+
+
+
+                    // TODO maybe I should just do a damn Utility UI, eff this shit lol https://www.gamasutra.com/blogs/JakobRasmussen/20160427/271188/Are_Behavior_Trees_a_Thing_of_the_Past.php
+                    BT.Log("Chasing Player"),
+                    BT.RunCoroutine(GetWithinStrikingDistanceOfThePlayer),
                     BT.Call(Attack)
                 ),
                 BT.Sequence().OpenBranch(
-                    BT.While(() => TestPlayerInStrikingDistance() == false).OpenBranch(
-                        BT.Log("Avoiding Player")
+                    BT.While(() => PlayerIsInStrikingDistance() == false).OpenBranch(
+                        BT.Log("Avoiding Player"),
+                        BT.Call(SitStill),
+                        BT.Call(LockOntoTarget)
                     )
                 )
             )
         );
     }
 
-    void OnDrawGizmosSelected()
+    //void OnDrawGizmos()
+    //{
+    //    if (trackingTransform == null)
+    //    {
+    //        return;
+    //    }
+    //    // Draw a semitransparent blue cube at the transforms position
+    //    Gizmos.color = Color.black;
+    //    Gizmos.DrawCube(trackingTransform.position, Vector3.one / 4);
+    //}
+
+    IEnumerator<BTState> GetWithinStrikingDistanceOfThePlayer()
     {
-        if (trackingTransform == null)
+        while (PlayerIsInStrikingDistance() == false)
         {
-            return;
+            LockOntoTarget();
+
+            if (ImOnTheEdgeOfTheDohyo() == false)
+            {
+                MoveToWardTarget();
+            }
+            yield return BTState.Continue;
         }
-        // Draw a semitransparent blue cube at the transforms position
-        Gizmos.color = Color.black;
-        Gizmos.DrawCube(trackingTransform.position, Vector3.one / 4);
+
+        yield return BTState.Success;
     }
 
-    bool TestPlayerInStrikingDistance()
+
+    void SitStill()
+    {
+        rikishiController.Move(Vector3.zero);
+    }
+
+    bool PlayerIsInStrikingDistance()
     {
         return distanceFromPlayerToMeSquared <= PersonalSpaceBubbleRadius;
+    }
+
+    bool ImOnTheEdgeOfTheDohyo()
+    {
+        return distanceFromMeToCenterOfDohyo >= DohyoRadius;
     }
 
     void Attack()
@@ -105,7 +145,8 @@ public class RikishiEnemyInputProvider : MonoBehaviour
 
     void LockOntoTarget()
     {
-        trackingTransform.position = Vector3.Lerp(trackingTransform.position, playerTransform.position, Time.deltaTime * TrackSpeed);
+        var idealTarget = new Vector3(playerTransform.position.x, trackingTransformStartY, playerTransform.position.z);
+        trackingTransform.position = Vector3.Lerp(trackingTransform.position, idealTarget, Time.deltaTime * TrackSpeed);
         rikishiController.SetDesiredAimTarget(trackingTransform.position);
     }
 
@@ -118,6 +159,10 @@ public class RikishiEnemyInputProvider : MonoBehaviour
     {
         fromPlayerToMe = playerTransform.position - transform.position;
         distanceFromPlayerToMeSquared = fromPlayerToMe.sqrMagnitude;
+
+        var fromMeToCenterOfDohyo = transform.position - Dohyo.position;
+        distanceFromMeToCenterOfDohyo = fromPlayerToMe.sqrMagnitude;
+
         behaviorTree.Tick();
     }
 }

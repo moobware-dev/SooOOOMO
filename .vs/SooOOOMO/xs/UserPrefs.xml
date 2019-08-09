@@ -3,11 +3,11 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Programming/RikishiEnemyInputProvider.cs">
     <Files>
       <File FileName="../2D Game Kit/Assets/2DGamekit/Scripts/AI/MissileGolem.cs" Line="113" Column="4" />
-      <File FileName="Assets/Programming/BT.cs" Line="423" Column="28" />
-      <File FileName="Assets/Programming/RikishiController.cs" Line="142" Column="10" />
-      <File FileName="Assets/Programming/RikishiPlayerInputProvider.cs" Line="43" Column="89" />
+      <File FileName="Assets/Programming/BT.cs" Line="409" Column="1" />
+      <File FileName="Assets/Programming/RikishiEnemyInputProvider.cs" Line="96" Column="1" />
+      <File FileName="Assets/Programming/RikishiController.cs" Line="169" Column="6" />
+      <File FileName="Assets/Programming/RikishiPlayerInputProvider.cs" Line="47" Column="98" />
       <File FileName="Assets/Programming/FadeToBlack.cs" Line="11" Column="41" />
-      <File FileName="Assets/Programming/RikishiEnemyInputProvider.cs" Line="110" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -28,10 +28,7 @@
   <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="f8c3f495-4aca-4421-9d44-f030e223bef1" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/Users/moobware/dev/SooOOOMO/Assets/Programming/BT.cs" relfile="Assets/Programming/BT.cs" line="460" column="1" />
-      <Breakpoint file="/Users/moobware/dev/SooOOOMO/Assets/Programming/BT.cs" relfile="Assets/Programming/BT.cs" line="414" column="1" />
-      <Breakpoint file="/Users/moobware/dev/SooOOOMO/Assets/Programming/BT.cs" relfile="Assets/Programming/BT.cs" line="409" column="1" />
-      <Breakpoint file="/Users/moobware/dev/SooOOOMO/Assets/Programming/BT.cs" relfile="Assets/Programming/BT.cs" line="462" column="1" />
+      <Breakpoint file="/Users/moobware/dev/SooOOOMO/Assets/Programming/RikishiController.cs" relfile="Assets/Programming/RikishiController.cs" line="186" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />

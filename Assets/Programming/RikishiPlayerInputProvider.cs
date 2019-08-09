@@ -19,6 +19,8 @@ public class RikishiPlayerInputProvider : MonoBehaviour
     ParameterizedFlabbiness zeFlabben;
     Scoreboard scoreboard;
 
+    // TODO I feel like keeping an input stream and checking the most recent items in it
+    // would be easier to maintain/read.  If inputStream.lasFewKeys == 'left key down', 'left key up', 'left key down' { do dodge }
     Dictionary<KeyCode, float> LastTimeKeyTapped = new Dictionary<KeyCode, float> {
         { KeyCode.D, -1000f}
     };

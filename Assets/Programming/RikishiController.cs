@@ -88,7 +88,7 @@ public class RikishiController : MonoBehaviour
     {
         if (enemyInRange)
         {
-            Debug.Log("This: " + this + " did the shoving");
+            //Debug.Log("This: " + this + " did the shoving");
             enemy.GetShoved((enemy.gameObject.transform.position - transform.position).normalized * shoveForce);
         }
     }
@@ -112,7 +112,7 @@ public class RikishiController : MonoBehaviour
 
     void GetShoved(Vector3 force)
     {
-        Debug.Log("This: " + this + " got shoved");
+        //Debug.Log("This: " + this + " got shoved");
         isShoved = true;
         shovedForce = force;
         rigidBody.freezeRotation = false;
@@ -123,7 +123,7 @@ public class RikishiController : MonoBehaviour
         if (isShoved)
         {
             isShoved = false;
-            Debug.Log("Force applied on: " + this);
+            //Debug.Log("Force applied on: " + this);
             this.animator.SetTrigger("Shoved");
             GetComponentInParent<Rigidbody>().AddForce(shovedForce);
             var enemyInputProviders = GetComponents<RikishiEnemyInputProvider>();
