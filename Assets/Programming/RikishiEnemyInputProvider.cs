@@ -69,24 +69,15 @@ public class RikishiEnemyInputProvider : MonoBehaviour
         behaviorTree.OpenBranch(
             BT.RandomSequence(new int[] { 3, 1 }).OpenBranch(
                 BT.Sequence().OpenBranch(
-                    //BT.While(() => TestPlayerInStrikingDistance() == false).OpenBranch(
-                    //    BT.Log("Seeking Player"),
-                    //    BT.Call(LockOntoTarget),
-                    //    BT.Call(MoveToWardTarget)
-                    //),
-                    //BT.Log("ATTACK!!!"),
-                    //BT.Call(Attack)
-
-
-
-                    // TODO maybe I should just do a damn Utility UI, eff this shit lol https://www.gamasutra.com/blogs/JakobRasmussen/20160427/271188/Are_Behavior_Trees_a_Thing_of_the_Past.php
                     BT.Log("Chasing Player"),
                     BT.RunCoroutine(GetWithinStrikingDistanceOfThePlayer),
-                    BT.Call(Attack)
+                    BT.Call(Attack),
+                    BT.RunCoroutine(GetReadyForNextAttack)
                 ),
                 BT.Sequence().OpenBranch(
                     BT.While(() => PlayerIsInStrikingDistance() == false).OpenBranch(
                         BT.Log("Avoiding Player"),
+                        BT.Call(() => ImOnTheEdgeOfTheDohyo()),
                         BT.Call(SitStill),
                         BT.Call(LockOntoTarget)
                     )
@@ -115,6 +106,29 @@ public class RikishiEnemyInputProvider : MonoBehaviour
             if (ImOnTheEdgeOfTheDohyo() == false)
             {
                 MoveToWardTarget();
+            } else
+            {
+                SitStill();
+            }
+            yield return BTState.Continue;
+        }
+
+        yield return BTState.Success;
+    }
+
+    IEnumerator<BTState> GetReadyForNextAttack()
+    {
+        var canAttackAgainSeconds = Time.time + 0.8333; // 5/6th of a second
+        while (Time.time < canAttackAgainSeconds)
+        {
+            LockOntoTarget();
+
+            if (ImOnTheEdgeOfTheDohyo() == false)
+            {
+                MoveToWardTarget();
+            } else
+            {
+                SitStill();
             }
             yield return BTState.Continue;
         }
@@ -161,8 +175,7 @@ public class RikishiEnemyInputProvider : MonoBehaviour
         distanceFromPlayerToMeSquared = fromPlayerToMe.sqrMagnitude;
 
         var fromMeToCenterOfDohyo = transform.position - Dohyo.position;
-        distanceFromMeToCenterOfDohyo = fromPlayerToMe.sqrMagnitude;
-
+        distanceFromMeToCenterOfDohyo = fromMeToCenterOfDohyo.sqrMagnitude;
         behaviorTree.Tick();
     }
 }

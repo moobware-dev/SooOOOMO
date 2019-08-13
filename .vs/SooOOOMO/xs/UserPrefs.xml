@@ -1,13 +1,15 @@
 ﻿<Properties StartupConfiguration="{FCED50B0-7394-5BBD-2CB4-D0AEFFE277E5}|">
   <MonoDevelop.Ide.ItemProperties.SooOOOMO PreferredExecutionTarget="Unity.Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Programming/RikishiEnemyInputProvider.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Programming/ResetGameIfTouched.cs">
     <Files>
       <File FileName="../2D Game Kit/Assets/2DGamekit/Scripts/AI/MissileGolem.cs" Line="113" Column="4" />
-      <File FileName="Assets/Programming/BT.cs" Line="409" Column="1" />
-      <File FileName="Assets/Programming/RikishiEnemyInputProvider.cs" Line="96" Column="1" />
-      <File FileName="Assets/Programming/RikishiController.cs" Line="169" Column="6" />
-      <File FileName="Assets/Programming/RikishiPlayerInputProvider.cs" Line="47" Column="98" />
-      <File FileName="Assets/Programming/FadeToBlack.cs" Line="11" Column="41" />
+      <File FileName="Assets/Programming/BT.cs" Line="5" Column="20" />
+      <File FileName="Assets/Programming/RikishiEnemyInputProvider.cs" Line="423" Column="2" />
+      <File FileName="Assets/Programming/RikishiController.cs" Line="107" Column="35" />
+      <File FileName="Assets/Programming/RikishiPlayerInputProvider.cs" Line="13" Column="50" />
+      <File FileName="Assets/Programming/FadeToBlack.cs" Line="18" Column="5" />
+      <File FileName="Assets/Programming/GameController.cs" Line="29" Column="41" />
+      <File FileName="Assets/Programming/ResetGameIfTouched.cs" Line="43" Column="35" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -15,7 +17,7 @@
           <Node name="SooOOOMO" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="Programming" expanded="True">
-                <Node name="RikishiEnemyInputProvider.cs" selected="True" />
+                <Node name="ResetGameIfTouched.cs" selected="True" />
               </Node>
             </Node>
           </Node>
@@ -28,7 +30,7 @@
   <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="f8c3f495-4aca-4421-9d44-f030e223bef1" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/Users/moobware/dev/SooOOOMO/Assets/Programming/RikishiController.cs" relfile="Assets/Programming/RikishiController.cs" line="186" column="1" />
+      <Breakpoint file="/Users/moobware/dev/SooOOOMO/Assets/Programming/RikishiController.cs" relfile="Assets/Programming/RikishiController.cs" line="188" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />

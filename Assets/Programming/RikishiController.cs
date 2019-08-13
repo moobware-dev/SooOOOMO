@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(CapsuleCollider))]
@@ -54,6 +55,8 @@ public class RikishiController : MonoBehaviour
         var rendererer = GetComponentInChildren<Renderer>();
         rendererer.material = new Material(Shader.Find("Standard"));
         rendererer.material.color = Random.ColorHSV(0, 1, 0.5f, 1);
+
+        StartCoroutine(MonkeyPatchFlyingSumoWreslterBug());
     }
 
     public void SetDesiredAimTarget(Vector3 targetInWorldSpace)
@@ -228,5 +231,17 @@ public class RikishiController : MonoBehaviour
     {
         yield return new WaitForSeconds(secondsToWait);
         rollin = true;
+    }
+
+    IEnumerator MonkeyPatchFlyingSumoWreslterBug()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1f);
+            if (transform.position.y > 100000)
+            {
+                SceneManager.LoadScene(0);
+            }
+        }
     }
 }
