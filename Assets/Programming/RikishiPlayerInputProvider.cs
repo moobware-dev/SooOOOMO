@@ -19,14 +19,6 @@ public class RikishiPlayerInputProvider : MonoBehaviour
     ParameterizedFlabbiness zeFlabben;
     Scoreboard scoreboard;
 
-    // TODO I feel like keeping an input stream and checking the most recent items in it
-    // would be easier to maintain/read.  If inputStream.lasFewKeys == 'left key down', 'left key up', 'left key down' { do dodge }
-    Dictionary<KeyCode, float> LastTimeKeyTapped = new Dictionary<KeyCode, float> {
-        { KeyCode.D, -1000f}
-    };
-
-    private bool shouldDodgeRight;
-
     void Start()
     {
         mainCameraTransform = Camera.main.transform;
@@ -56,33 +48,13 @@ public class RikishiPlayerInputProvider : MonoBehaviour
         float v = CrossPlatformInputManager.GetAxis("Vertical");
         var movementVector = v * playerTransform.forward + h * playerTransform.right;
         rikishiController.Move(movementVector.normalized);
-
-        if (shouldDodgeRight)
-        {
-            shouldDodgeRight = false;
-            rikishiController.DodgeRight();
-        }
     }
 
     private void Update()
     {
-        if (Input.GetKeyUp(KeyCode.D))
-        {
-            if (PlayerDoubleTapped(KeyCode.D))
-            {
-                shouldDodgeRight = true;
-            }
-            LastTimeKeyTapped[KeyCode.D] = Time.time;
-        }
-
         if (Input.GetMouseButtonDown(0))
         {
             rikishiController.AttemptShove();
         }
-    }
-
-    private bool PlayerDoubleTapped(KeyCode key)
-    {
-        return (Time.time - LastTimeKeyTapped[key]) < doubleTapDelayTime;
     }
 }

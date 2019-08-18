@@ -12,9 +12,6 @@ public class RikishiController : MonoBehaviour
     public float MoveSpeed = 1f;
     public float shoveForce = 100f;
 
-    public float dodgeStepForce = 100f;
-    public float dodgeHopForce = 100f;
-
     public float minimumTurnAmountThreshold = 0.01f;
     public float minimumMoveAmountThreshold = 0.5f;
 
@@ -94,23 +91,6 @@ public class RikishiController : MonoBehaviour
             //Debug.Log("This: " + this + " did the shoving");
             enemy.GetShoved((enemy.gameObject.transform.position - transform.position).normalized * shoveForce);
         }
-    }
-
-    public void DodgeRight() {
-        if (isDodging) {
-            return; 
-        }
-        isDodging = true;
-        animator.SetTrigger("Dodge Right");
-        rigidBody.AddForce(transform.right * dodgeStepForce);
-    }
-
-    public void DodgeRightStep() {
-        rigidBody.AddForce(transform.right * dodgeHopForce);
-    }
-
-    public void DodgeDone() {
-        isDodging = false;
     }
 
     void GetShoved(Vector3 force)
