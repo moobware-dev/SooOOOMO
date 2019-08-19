@@ -8,6 +8,8 @@ using UnityEngine.SceneManagement;
 public class RikishiController : MonoBehaviour
 {
     public Material playerMaterial;
+    public GameObject ragdollParent;
+    private Rigidbody[] physicalRigidBodies;
 
     public float MoveSpeed = 1f;
     public float shoveForce = 100f;
@@ -15,7 +17,7 @@ public class RikishiController : MonoBehaviour
     public float minimumTurnAmountThreshold = 0.01f;
     public float minimumMoveAmountThreshold = 0.5f;
 
-    Rigidbody rigidBody;
+    Rigidbody logicalRigidBody;
     Animator animator;
     CapsuleCollider capsule;
     RikishiController enemy;
@@ -25,19 +27,19 @@ public class RikishiController : MonoBehaviour
     bool enemyInRange;
 
     bool doinTheDance = true;
-    
+
     Vector3 previousAimTarget;
     Vector3 currentAimTarget;
 
     bool isDodging = false;
 
-    public Vector3 RollinSpeed = Vector3.zero;
-    private bool rollin = false;
+    //public Vector3 RollinSpeed = Vector3.zero;
+    //private bool rollin = false;
 
     void Start()
     {
         animator = GetComponent<Animator>();
-        rigidBody = GetComponent<Rigidbody>();
+        logicalRigidBody = GetComponent<Rigidbody>();
         capsule = GetComponent<CapsuleCollider>();
         var rikishis = FindObjectsOfType<RikishiController>();
         if (rikishis[0] != this)
@@ -54,6 +56,9 @@ public class RikishiController : MonoBehaviour
         rendererer.material.color = Random.ColorHSV(0, 1, 0.5f, 1);
 
         StartCoroutine(MonkeyPatchFlyingSumoWreslterBug());
+
+        physicalRigidBodies = ragdollParent.GetComponentsInChildren<Rigidbody>();
+        DisableRagdoll();
     }
 
     public void SetDesiredAimTarget(Vector3 targetInWorldSpace)
@@ -73,8 +78,8 @@ public class RikishiController : MonoBehaviour
         {
             return;
         }
-        move.y = rigidBody.velocity.y;
-        rigidBody.velocity = move * MoveSpeed;
+        move.y = logicalRigidBody.velocity.y;
+        logicalRigidBody.velocity = move * MoveSpeed;
 
         UpdateAnimator(move);
     }
@@ -95,10 +100,10 @@ public class RikishiController : MonoBehaviour
 
     void GetShoved(Vector3 force)
     {
-        //Debug.Log("This: " + this + " got shoved");
+        Debug.Log("This: " + this + " got shoved");
         isShoved = true;
         shovedForce = force;
-        rigidBody.freezeRotation = false;
+        logicalRigidBody.freezeRotation = false;
     }
 
     void FixedUpdate()
@@ -108,7 +113,9 @@ public class RikishiController : MonoBehaviour
             isShoved = false;
             //Debug.Log("Force applied on: " + this);
             this.animator.SetTrigger("Shoved");
-            GetComponentInParent<Rigidbody>().AddForce(shovedForce);
+            logicalRigidBody.AddForce(shovedForce);
+            logicalRigidBody.AddRelativeForce(-1 * transform.forward * 200f);
+            StartCoroutine(GoLimpAfterABit());
             var enemyInputProviders = GetComponents<RikishiEnemyInputProvider>();
             foreach (var enemyInputProvider in enemyInputProviders)
             {
@@ -120,13 +127,6 @@ public class RikishiController : MonoBehaviour
             {
                 playerInputProvider.enabled = false;
             }
-
-            StartCoroutine(JustKeepRollinRollinRollin(2));
-        }
-
-        if (rollin)
-        {
-            rigidBody.AddTorque(RollinSpeed);
         }
     }
 
@@ -141,7 +141,7 @@ public class RikishiController : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        //Debug.Log("detected thing: " + other);
+        Debug.Log("detected thing: " + other);
         if (other.gameObject != transform.gameObject)
         {
             enemyInRange = false;
@@ -163,19 +163,19 @@ public class RikishiController : MonoBehaviour
         // "The magnitude of an object’s rigidbody.velocity vector will give the speed 
         // in its direction of overall motion but to isolate the speed in the forward direction,
         // you should use the dot product"
-        var playerForwardMovement = Mathf.Abs(Vector3.Dot(rigidBody.velocity, transform.forward));
-        var playerRightMovement = Mathf.Abs(Vector3.Dot(rigidBody.velocity, transform.right));
+        var playerForwardMovement = Mathf.Abs(Vector3.Dot(logicalRigidBody.velocity, transform.forward));
+        var playerRightMovement = Mathf.Abs(Vector3.Dot(logicalRigidBody.velocity, transform.right));
 
         var standingStill = (
             !turning
             && playerForwardMovement < minimumMoveAmountThreshold
             && playerRightMovement < minimumMoveAmountThreshold);
-        
-        var turningInPlace =  (
+
+        var turningInPlace = (
             turning
             && playerForwardMovement < minimumMoveAmountThreshold
             && playerRightMovement < minimumMoveAmountThreshold);
-        
+
         var walkingStraight = (
             !turning
             && playerForwardMovement > minimumMoveAmountThreshold
@@ -206,22 +206,51 @@ public class RikishiController : MonoBehaviour
         }
     }
 
-
-    IEnumerator JustKeepRollinRollinRollin(float secondsToWait)
+    IEnumerator GoLimpAfterABit()
     {
-        yield return new WaitForSeconds(secondsToWait);
-        rollin = true;
+        yield return new WaitForSeconds(0.5f);
+        EnableRagdoll();
     }
 
     IEnumerator MonkeyPatchFlyingSumoWreslterBug()
     {
         while (true)
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.25f);
             if (transform.position.y > 100000)
             {
                 SceneManager.LoadScene(0);
             }
+        }
+    }
+
+    // Let the rigidbody take control and detect collisions.
+    public void EnableRagdoll()
+    {
+        var velocityOfLogicalRigidBody = logicalRigidBody.velocity;
+        animator.enabled = false;
+        logicalRigidBody.isKinematic = true;
+        logicalRigidBody.detectCollisions = false;
+
+        foreach (var rb in physicalRigidBodies)
+        {
+            rb.isKinematic = false;
+            rb.detectCollisions = true;
+            rb.velocity = velocityOfLogicalRigidBody;
+        }
+    }
+
+    // Let animation control the rigidbody and ignore collisions.
+    void DisableRagdoll()
+    {
+        animator.enabled = true;
+        logicalRigidBody.isKinematic = false;
+        logicalRigidBody.detectCollisions = true;
+
+        foreach (var rb in physicalRigidBodies)
+        {
+            rb.isKinematic = true;
+            rb.detectCollisions = false;
         }
     }
 }

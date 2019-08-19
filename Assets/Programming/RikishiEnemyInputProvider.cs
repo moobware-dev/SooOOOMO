@@ -69,14 +69,14 @@ public class RikishiEnemyInputProvider : MonoBehaviour
         behaviorTree.OpenBranch(
             BT.RandomSequence(new int[] { 3, 1 }).OpenBranch(
                 BT.Sequence().OpenBranch(
-                    BT.Log("Chasing Player"),
+                    //BT.Log("Chasing Player"),
                     BT.RunCoroutine(GetWithinStrikingDistanceOfThePlayer),
                     BT.Call(Attack),
                     BT.RunCoroutine(GetReadyForNextAttack)
                 ),
                 BT.Sequence().OpenBranch(
                     BT.While(() => PlayerIsInStrikingDistance() == false).OpenBranch(
-                        BT.Log("Avoiding Player"),
+                        //BT.Log("Avoiding Player"),
                         BT.Call(() => ImOnTheEdgeOfTheDohyo()),
                         BT.Call(SitStill),
                         BT.Call(LockOntoTarget)

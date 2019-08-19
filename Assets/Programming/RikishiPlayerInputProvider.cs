@@ -6,10 +6,6 @@ using UnityStandardAssets.CrossPlatformInput;
 [RequireComponent(typeof(RikishiController))]
 public class RikishiPlayerInputProvider : MonoBehaviour
 {
-    public float doubleTapDelayTime = 0.25f;
-    //private KeyCode lastKeyPressed;
-    //private float lastKeyPressTime;
-
     public float DebugPlayerAimRayHeight = 0.75f;
     public float DebugPlayerAimRayLength = 1f;
     Transform mainCameraTransform;
@@ -55,6 +51,11 @@ public class RikishiPlayerInputProvider : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             rikishiController.AttemptShove();
+        }
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            rikishiController.EnableRagdoll();
         }
     }
 }
