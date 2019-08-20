@@ -937,7 +937,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1115969190, guid: 88a4cdf1c2f84496293b4e9382e3dbe0, type: 3}
       propertyPath: moveForce
-      value: 9
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 1115969190, guid: 88a4cdf1c2f84496293b4e9382e3dbe0, type: 3}
+      propertyPath: movementForceDamping
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 965768583, guid: 88a4cdf1c2f84496293b4e9382e3dbe0, type: 3}
       propertyPath: m_Layer

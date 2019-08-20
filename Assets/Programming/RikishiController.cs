@@ -13,6 +13,7 @@ public class RikishiController : MonoBehaviour
 
     public float MoveSpeed = 1f;
     public float shoveForce = 100f;
+    public float movementForceDamping = 1f;
 
     public float minimumTurnAmountThreshold = 0.01f;
     public float minimumMoveAmountThreshold = 0.5f;
@@ -81,10 +82,12 @@ public class RikishiController : MonoBehaviour
         }
 
         Debug.DrawLine(logicalRigidBody.position, logicalRigidBody.position + (move * moveForce), Color.red);
-        logicalRigidBody.AddForce(logicalRigidBody.position + (move * moveForce), ForceMode.Acceleration);
+        var movementForce = logicalRigidBody.position + (move * moveForce);
+        movementForce -= (new Vector3(logicalRigidBody.velocity.x, 0, logicalRigidBody.velocity.z) * movementForceDamping); // BS attempt at canceling out the force by how fast you're already moving
+        logicalRigidBody.AddForce(movementForce, ForceMode.Force);
 
         // TODO supposedly if I use AddForce I'll get around my shitty flying sumo wrestler collision issue
-        //logicalRigidBody.AddRelativeForce(new Vector3(move.x, 0, move.z) * moveForce);
+        //logicalRigidBody.AddRelativeForce(new Vector3(move.x, 0, move.z) * moveForce); // didn't work for shit
 
         UpdateAnimator(move);
     }
