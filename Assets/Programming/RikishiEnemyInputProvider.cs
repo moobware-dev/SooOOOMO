@@ -136,7 +136,6 @@ public class RikishiEnemyInputProvider : MonoBehaviour
         yield return BTState.Success;
     }
 
-
     void SitStill()
     {
         rikishiController.Move(Vector3.zero);

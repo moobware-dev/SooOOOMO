@@ -935,6 +935,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1115969190, guid: 88a4cdf1c2f84496293b4e9382e3dbe0, type: 3}
+      propertyPath: moveForce
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 965768583, guid: 88a4cdf1c2f84496293b4e9382e3dbe0, type: 3}
       propertyPath: m_Layer
       value: 0
@@ -1395,6 +1399,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7617880339866983519, guid: c06f648cb430f44ad97f1a2122e44d7c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 55350233456280835, guid: c06f648cb430f44ad97f1a2122e44d7c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1468,7 +1477,7 @@ PrefabInstance:
     - target: {fileID: 1557330436444911243, guid: c06f648cb430f44ad97f1a2122e44d7c,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2203557028207616797, guid: c06f648cb430f44ad97f1a2122e44d7c,
         type: 3}

@@ -31,11 +31,6 @@ public class RikishiController : MonoBehaviour
     Vector3 previousAimTarget;
     Vector3 currentAimTarget;
 
-    bool isDodging = false;
-
-    //public Vector3 RollinSpeed = Vector3.zero;
-    //private bool rollin = false;
-
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -72,14 +67,24 @@ public class RikishiController : MonoBehaviour
         transform.LookAt(currentAimTarget);
     }
 
+    public float moveForce = 10f;
+
     public void Move(Vector3 move)
     {
-        if (isShoved || isDodging)
+        if (isShoved)
         {
             return;
         }
-        move.y = logicalRigidBody.velocity.y;
-        logicalRigidBody.velocity = move * MoveSpeed;
+        if(CompareTag("Player"))
+        {
+            Debug.Log("move: " + move);
+        }
+
+        Debug.DrawLine(logicalRigidBody.position, logicalRigidBody.position + (move * moveForce), Color.red);
+        logicalRigidBody.AddForce(logicalRigidBody.position + (move * moveForce), ForceMode.Acceleration);
+
+        // TODO supposedly if I use AddForce I'll get around my shitty flying sumo wrestler collision issue
+        //logicalRigidBody.AddRelativeForce(new Vector3(move.x, 0, move.z) * moveForce);
 
         UpdateAnimator(move);
     }
@@ -152,7 +157,6 @@ public class RikishiController : MonoBehaviour
     {
         if (doinTheDance && move.sqrMagnitude > 0.1f)
         {
-            Debug.Log("They tryna move dawg");
             animator.SetTrigger("Stop Dancing");
             doinTheDance = false;
         }
