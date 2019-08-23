@@ -4,16 +4,14 @@
     <Files>
       <File FileName="Assets/Programming/RikishiEnemyInputProvider.cs" Line="156" Column="38" />
       <File FileName="Assets/Programming/RikishiPlayerInputProvider.cs" />
-      <File FileName="Assets/Programming/RikishiController.cs" Line="81" Column="10" />
+      <File FileName="Assets/Programming/RikishiController.cs" Line="83" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="af5a725e-6fde-48b0-aa09-16fac7c6d395" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="8cfa2121-7639-4f8c-a721-69a96f666dc3" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/moobware/dev/SooOOOMO/Assets/Programming/RikishiController.cs" relfile="Assets/Programming/RikishiController.cs" line="56" column="1" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>

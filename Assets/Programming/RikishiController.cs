@@ -86,8 +86,7 @@ public class RikishiController : MonoBehaviour
         movementForce -= (new Vector3(logicalRigidBody.velocity.x, 0, logicalRigidBody.velocity.z) * movementForceDamping); // BS attempt at canceling out the force by how fast you're already moving
         logicalRigidBody.AddForce(movementForce, ForceMode.Force);
 
-        // TODO supposedly if I use AddForce I'll get around my shitty flying sumo wrestler collision issue
-        //logicalRigidBody.AddRelativeForce(new Vector3(move.x, 0, move.z) * moveForce); // didn't work for shit
+        // TODO HEY MCKAY, MAKE THE ENEMY MOVE WITH FORCES NOW BRUH
 
         UpdateAnimator(move);
     }
