@@ -3,17 +3,16 @@
 using UnityEngine;
 using System.Collections;
 
+[ExecuteInEditMode]
 public class ParameterizedFlabbiness: MonoBehaviour
 {
     public float Flabbiness;
 
     SkinnedMeshRenderer skinnedMeshRenderer;
-    Mesh skinnedMesh;
 
     void Awake()
     {
         skinnedMeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
-        skinnedMesh = skinnedMeshRenderer.sharedMesh;
     }
 
     void Start()
