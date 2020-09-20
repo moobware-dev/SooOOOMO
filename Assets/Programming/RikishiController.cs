@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class RikishiController : MonoBehaviour
 {
     public Material playerMaterial;
-    public GameObject ragdollParent;
+    public GameObject ragdollParent;    
     private Rigidbody[] physicalRigidBodies;
 
     public float MoveSpeed = 1f;
@@ -17,21 +17,21 @@ public class RikishiController : MonoBehaviour
     public float minimumTurnAmountThreshold = 0.01f;
     public float minimumMoveAmountThreshold = 0.5f;
 
-    Rigidbody logicalRigidBody;
-    Animator animator;
-    CapsuleCollider capsule;
-    RikishiController enemy;
+    private Rigidbody logicalRigidBody;
+    private Animator animator;
+    private CapsuleCollider capsule;
+    private RikishiController enemy;
 
-    bool isShoved = false;
-    Vector3 shovedForce;
-    bool enemyInRange;
+    private Vector3 shovedForce;
+    private bool isShoved = false;
+    private bool enemyInRange;
 
-    bool doinTheDance = true;
+    private bool doinTheDance = true;
 
-    Vector3 previousAimTarget;
-    Vector3 currentAimTarget;
+    private Vector3 previousAimTarget;
+    private Vector3 currentAimTarget;
 
-    bool isDodging = false;
+    private bool isDodging = false;
 
     //public Vector3 RollinSpeed = Vector3.zero;
     //private bool rollin = false;

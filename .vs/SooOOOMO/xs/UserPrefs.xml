@@ -1,20 +1,20 @@
 ﻿<Properties StartupConfiguration="{FCED50B0-7394-5BBD-2CB4-D0AEFFE277E5}|">
   <MonoDevelop.Ide.ItemProperties.SooOOOMO PreferredExecutionTarget="Unity.Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/ITERATE/PlayerControls_ITERATE.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/ITERATE/DisableRigidBodies_ITERATE.cs">
     <Files>
       <File FileName="Assets/Programming/RikishiEnemyInputProvider.cs" Line="621" Column="1" />
-      <File FileName="Assets/Programming/RikishiPlayerInputProvider.cs" Line="1" Column="1" />
-      <File FileName="Assets/Programming/RikishiController.cs" Line="227" Column="1" />
-      <File FileName="Assets/Programming/GameController.cs" Line="23" Column="10" />
-      <File FileName="Assets/Programming/ParameterizedFlabbiness.cs" Line="7" Column="1" />
-      <File FileName="Assets/Programming/Scoreboard.cs" Line="22" Column="1" />
-      <File FileName="Assets/ITERATE/PlayerControls_ITERATE.cs" Line="1" Column="1" />
-      <File FileName="Assets/ITERATE/DisableRigidBodies_ITERATE.cs" Line="21" Column="1" />
+      <File FileName="Assets/Programming/RikishiPlayerInputProvider.cs" />
+      <File FileName="Assets/Programming/GameController.cs" />
+      <File FileName="Assets/Programming/ParameterizedFlabbiness.cs" />
+      <File FileName="Assets/Programming/Scoreboard.cs" />
+      <File FileName="Assets/ITERATE/PlayerControls_ITERATE.cs" />
+      <File FileName="Assets/Programming/RikishiController.cs" />
+      <File FileName="Assets/ITERATE/DisableRigidBodies_ITERATE.cs" Line="8" Column="37" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="aebf7385-013c-4e4e-a86b-11032122a1ba" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="4b61ec5f-cfb0-40f9-b244-9b004fd25859" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
